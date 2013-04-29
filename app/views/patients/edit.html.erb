@@ -1,0 +1,13 @@
+
+
+
+
+<div style="margin-left:8.1pt;">
+  <%= button_to 'Back to Whiteboard', "/whiteboard/index", :method => "get" %> 
+</div>
+<br />
+
+<%= render 'form' %>
+
+<%= button_to 'Discharge Patient', @patient, method: :delete, data: { confirm: 'Are you sure you want to discharge this patient? This operation can not be undone.' }, :method => "delete" %>
+<br/ >

@@ -1,0 +1,98 @@
+<div class="preeclampsia_form_set">
+
+	<table class="preeclampsia_form_table" style="width:97.5%;">
+		<tr>
+			<td>
+				Preeclampsia:<br /><br />
+				<table class="preeclampsia_sub_form_table" style="width:85%;margin-left:30px;">
+					<tr>
+
+						<td>
+							<span class="field">
+								<%= comment_fields.check_box :mild_pre %> <%= comment_fields.label :mild_pre,'Mild' %>
+							</span>
+							<span class="field">
+								<%= comment_fields.check_box :sev_pre %> <%= comment_fields.label :sev_pre,'Severe' %>
+							</span>
+						</td>
+
+					</tr>
+
+					<tr>
+
+						<td>
+							<div class="field">
+							  <span class="preeclampsia_text"><%= comment_fields.label :pre_bp,'Blood Pressure' %></span><br />
+							  <%= comment_fields.text_field :pre_bp %>
+							</div>
+						</td>
+
+					</tr>
+
+					<tr>
+
+						<td>
+							<div class="field">
+							  <span class="preeclampsia_text"><%= comment_fields.label :pre_plat,'Platelets' %></span><br />
+							  <%= comment_fields.text_field :pre_plat %>
+							</div>
+						</td>
+
+					</tr>
+
+					<tr>
+
+						<td>
+							<div class="field">
+							  <span class="preeclampsia_text"><%= comment_fields.label :pre_when,'Date' %></span><br />
+								<%= comment_fields.datetime_select :pre_when, :order => [:month, :day, :year], :date_separator => "" %>
+							</div>
+						</td>
+
+					</tr>
+
+				</table>
+			</td>
+			<td>
+				Eclampsia:<br /><br />
+				<table class="eclampsia_sub_form_table" style="width:85%;margin-left:30px;">
+					<tr>
+
+						<td>
+							<div class="field">
+							  <%= comment_fields.label :e_bp,'Blood Pressure' %><br />
+							  <%= comment_fields.text_field :e_bp %>
+							</div>
+						</td>
+
+					</tr>
+
+					<tr>
+
+						<td>
+							<div class="field">
+							  <%= comment_fields.label :e_plat,'Platelets' %><br />
+							  <%= comment_fields.text_field :e_plat %>
+							</div>
+						</td>
+
+					</tr>
+
+					<tr>
+
+						<td>
+							<div class="field">
+							  <%= comment_fields.label :e_when,'Date' %><br />
+								<%= comment_fields.datetime_select :e_when, :order => [:month, :day, :year], :date_separator => "" %>
+							</div>
+						</td>
+
+					</tr>
+
+				</table>
+			</td>
+
+		</tr>
+	</table>
+
+</div>

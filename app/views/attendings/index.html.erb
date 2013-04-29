@@ -1,0 +1,23 @@
+<h1>Listing attendings</h1>
+
+<table>
+  <tr>
+    <th>First name</th>
+    <th>Last name</th>
+    <th></th>
+
+  </tr>
+
+<% @attendings.each do |attending| %>
+  <tr>
+    <td><%= attending.first_name %></td>
+    <td><%= attending.last_name %></td>
+    <td><%= button_to 'Edit' , edit_attending_path(attending), :method => "get" %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= button_to 'New attending', new_attending_path, :method => "get" %>
+<br />
+<%= button_to 'Back to Whiteboard', "/whiteboard/index", :method => "get" %> 

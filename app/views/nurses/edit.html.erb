@@ -1,0 +1,6 @@
+<h1>Editing nurse</h1>
+
+<%= render 'form' %>
+
+<%= button_to 'Remove', @nurse, method: :delete, data: { confirm: 'Are you sure you want to remove this nurse from the list? Once completed, this option can not be undone' }, :method => "delete" %>
+<%= button_to 'Back', nurses_path, :method => "get" %>

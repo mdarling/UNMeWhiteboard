@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Exam time:</b>
+  <%= @last_exam.exam_time %>
+</p>
+
+<p>
+  <b>Dilation:</b>
+  <%= @last_exam.dilation %>
+</p>
+
+<p>
+  <b>Effacement:</b>
+  <%= @last_exam.effacement %>
+</p>
+
+<p>
+  <b>Station:</b>
+  <%= @last_exam.station %>
+</p>
+
+<p>
+  <b>Patient:</b>
+  <%= @last_exam.patient_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_last_exam_path(@last_exam) %> |
+<%= link_to 'Back', last_exams_path %>

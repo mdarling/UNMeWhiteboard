@@ -1,0 +1,103 @@
+<div class="thrombophilia_form_set">
+  <table class="thrombophilia_form_table" style="width:97.5%;">
+    <tr>
+
+			<td>
+	  	  <div class="field">
+    	    <%= comment_fields.check_box :antithrombin %>
+	  	    <%= comment_fields.label :antithrombin %>
+	  	  </div>
+			</td>
+
+			<td>
+	  	  <div class="field">
+    	    <%= comment_fields.check_box :prot_c_deficiency %>
+    	    <%= comment_fields.label :prot_c_deficiency %>
+	  	  </div>
+			</td>
+
+			<td>
+	  	  <div class="field">
+    	    <%= comment_fields.check_box :prot_s_deficiency %>
+    	    <%= comment_fields.label :prot_s_deficiency %>
+	  	  </div>
+			</td>
+
+    </tr><tr>
+
+			<td>
+	  	  <div class="field">
+			    <%= comment_fields.check_box :factor_v_leiden %>
+			    <%= comment_fields.label :factor_v_leiden %>
+			  </div>
+			</td>
+
+			<td>
+				<div class="field">
+					<%= comment_fields.check_box :lupus_anticoag %>
+					<%= comment_fields.label :lupus_anticoag %>
+				</div>
+			</td>
+
+			<td>
+				<div class="field">
+					<%= comment_fields.label :thrombophilia_free_text %><br />
+					<%= comment_fields.text_field :thrombophilia_free_text %>
+				</div>
+			</td>
+
+    <tr></tr>
+<!--start here -->
+		<tr>
+		<td style="padding-bottom:0px;text-align:bottom;">
+						<div class="field">
+						  <%= comment_fields.check_box :anticoag_meds %>
+						  <%= comment_fields.label :anticoag_meds %>
+						</div>
+						<div style="padding-left:20px;" class="field">
+						  <span class="ac_text"><%= comment_fields.label :hep_sq_mg,"Heparin subqutaneous (milligrams)" %>
+							</span><br />
+						  <%= comment_fields.text_field :hep_sq_mg %>
+						</div>
+						<div style="padding-left:20px;" class="field">
+						  <span class="ac_text"><%= comment_fields.label "given at" %>
+							</span><br />
+						  <%= comment_fields.datetime_select :hep_sq_when, :order => [:month, :day, :year], :date_separator => "" %>
+						</div>
+			</td>
+
+		<td style="padding-top:29px;text-align:bottom;">
+						<div class="field">
+						</div>
+						<div style="padding-left:0px;" class="field">
+						  <span class="ac_text"><%= comment_fields.label :hep_iv_mg,"Heparin intravenous (milligrams)" %>
+							</span><br />
+						  <%= comment_fields.text_field :hep_iv_mg %>
+						</div>
+						<div style="padding-left:0px;" class="field">
+						  <span class="ac_text"><%= comment_fields.label "given at" %>
+							</span><br />
+						  <%= comment_fields.datetime_select :hep_iv_when, :order => [:month, :day, :year], :date_separator => "" %>
+						</div>
+			</td>
+			
+		<td style="padding-top:29px;">
+						<div class="field">
+						</div>
+						<div style="padding-left:0px;" class="field">
+						  <span class="ac_text"><%= comment_fields.label :lmwh_mg, "lmwh (milligrams)" %>
+							</span><br />
+						  <%= comment_fields.text_field :lmwh_mg %>
+						</div>
+						<div style="padding-left:0px;" class="field">
+						  <span class="ac_text"><%= comment_fields.label "given at" %>
+							</span><br />
+						  <%= comment_fields.datetime_select :lmwh_when, :order => [:month, :day, :year], :date_separator => "" %>
+						</div>
+			</td>
+			</tr>
+
+<!-- to here -->
+    </tr>
+  </table>
+</div>

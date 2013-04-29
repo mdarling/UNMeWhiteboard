@@ -1,0 +1,53 @@
+<h1>Listing patients</h1>
+
+<table>
+  <tr>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Last exam</th>
+    <th>Current dilation</th>
+    <th>Current effacement</th>
+    <th>Current station</th>
+    <th>Membrane</th>
+    <th>Est gest age</th>
+    <th>Gravidity</th>
+    <th>Parity</th>
+    <th>Group b strep</th>
+    <th>Blood type</th>
+    <th>Body mass index</th>
+    <th>Room</th>
+    <th>Attending</th>
+    <th>Nurse</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @patients.each do |patient| %>
+  <tr>
+    <td><%= patient.first_name %></td>
+    <td><%= patient.last_name %></td>
+    <td><%= patient.last_exam %></td>
+    <td><%= patient.current_dilation %></td>
+    <td><%= patient.current_effacement %></td>
+    <td><%= patient.current_station %></td>
+    <td><%= patient.membrane %></td>
+    <td><%= patient.est_gest_age %></td>
+    <td><%= patient.gravidity %></td>
+    <td><%= patient.parity %></td>
+    <td><%= patient.group_b_strep %></td>
+    <td><%= patient.blood_type %></td>
+    <td><%= patient.body_mass_index %></td>
+    <td><%= patient.room_id %></td>
+    <td><%= patient.attending_id %></td>
+    <td><%= patient.nurse_id %></td>
+    <td><%= link_to 'Show', patient %></td>
+    <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
+    <td><%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Patient', new_patient_path %>

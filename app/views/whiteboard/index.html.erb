@@ -1,0 +1,74 @@
+
+<table>
+  <tr>
+    <th>ROOM</th>
+    <th>NAME</th>
+    <th>ATTEND</th>
+    <th>NURSE</th>
+    <th>DIL</th>
+    <th>EFF</th>
+    <th>STA</th>
+    <th>EXAM</th>
+    <th>MEM</th>
+    <th>BMI</th>
+    <th>EGA</th>
+    <th>AI</th>
+    <th>G</th>
+    <th>P</th>
+    <th>GBS</th>
+    <th>BT</th>
+    <th>COMMENTS</th>
+  </tr>
+<% @rooms.sort! { |a,b| a.position <=> b.position} %>
+<% @rooms.each do |room| %>
+  <tr class = "front_table">
+    <% if room.patient == nil %>
+    <td><%= link_to room.room_number, new_room_patient_path(:room_id => room), :class => "classname" %></td>
+    <td><%= nil %></td>
+    <td><%= nil %></td>
+    <td><%= nil %></td>
+    <td><%= nil %></td>
+    <td><%= nil %></td>
+    <td><%= nil %></td>
+    <td><%= nil %></td>
+    <td><%= nil %></td>
+    <td><%= nil %></td>
+    <td><%= nil %></td>
+    <td><%= nil %></td>
+    <td><%= nil %></td>
+    <td><%= nil %></td>
+    <td><%= nil %></td>
+    <td><%= nil %></td>
+    <td><%= nil %></td>
+    <% else %>
+    <td><%= link_to room.room_number, edit_room_patient_path(:room_id => room, :id => room.patient), :class => "classname" %>
+    <td><%= room.patient.name_with_initial %></td>
+ 		<td><%= room.patient.assigned_attending %></td>
+ 		<td><%= room.patient.assigned_nurse %></td>
+ 		<td><%= room.patient.current_dilation %></td>
+ 		<td><%= room.patient.current_effacement %></td>
+ 		<td><%= room.patient.current_station %></td>
+ 		<td><%= room.patient.last_exam.strftime "%a %b %d %R" %></td>
+ 		<td><%= room.patient.membrane %></td>
+ 		<td><%= room.patient.body_mass_index %></td>
+ 		<td><%= room.patient.est_gest_age %></td>
+ 		<td><%= room.patient.anesthesia_interview %></td>
+ 		<td><%= room.patient.gravidity %></td>
+ 		<td><%= room.patient.parity %></td>
+ 		<td><%= room.patient.group_b_strep %></td>
+ 		<td><%= room.patient.blood_type %></td>
+		<td><%= room.patient.comment.abbr_comments %></td>   
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<div>
+	<%= button_to "Edit Attendings", attendings_path, :method => "get" %>
+	<%= button_to "Edit Nurses", nurses_path, :method => "get" %>
+</div>
+
+ 
+ 

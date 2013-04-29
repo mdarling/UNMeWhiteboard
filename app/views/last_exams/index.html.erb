@@ -1,0 +1,31 @@
+<h1>Listing last_exams</h1>
+
+<table>
+  <tr>
+    <th>Exam time</th>
+    <th>Dilation</th>
+    <th>Effacement</th>
+    <th>Station</th>
+    <th>Patient</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @last_exams.each do |last_exam| %>
+  <tr>
+    <td><%= last_exam.exam_time %></td>
+    <td><%= last_exam.dilation %></td>
+    <td><%= last_exam.effacement %></td>
+    <td><%= last_exam.station %></td>
+    <td><%= last_exam.patient_id %></td>
+    <td><%= link_to 'Show', last_exam %></td>
+    <td><%= link_to 'Edit', edit_last_exam_path(last_exam) %></td>
+    <td><%= link_to 'Destroy', last_exam, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Last exam', new_last_exam_path %>

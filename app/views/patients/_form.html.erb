@@ -1,0 +1,418 @@
+<%=javascript_include_tag 'jQueryRotate.2.2.js'%>
+<%=javascript_include_tag '_form.js'%>
+<LINK href="/assets/_form.css.scss" rel="stylesheet" type="text/css">
+
+<style>
+
+	table,tr,td,th{
+	    padding:10px;
+	    color:black;
+	    font-size:14pt;
+	    text-align:left;
+
+	    }
+
+	td.button{
+	    width:50%;
+	    text-align:center;
+	    vertical-align:middle;
+	    background-color:#eee;
+      padding-top:10pt;
+      padding-bottom:10pt;
+	}
+
+	table{border:1px solid #eeeeee;width:95%;margin-left:15px}
+	
+	tr{border:0px;}
+	td{border:0px;width:33%;vertical-align:top;}
+	tr:hover{
+	    background-color:#e0e0e0;
+	    }
+	td:hover{
+	    background-color:#d8d8d8;
+	    }
+	table:hover{border:1px solid black;}
+
+
+
+	tr{background-color:#eeeeee;}
+
+
+</style>
+
+
+
+<html>
+
+
+	<%= form_for(@patient) do |f| %>
+		<% if @patient.errors.any? %>
+		  <div id="error_explanation">
+		    <h2><%= pluralize(@patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+
+		    <ul>
+		    <% @patient.errors.full_messages.each do |msg| %>
+		      <li><%= msg %></li>
+		    <% end %>
+		    </ul>
+		  </div>
+		<% end %>
+
+
+		<table class="name">
+			<tr class="name">
+				<td class="name">  
+					<div class="field">
+						<%= f.label :first_name %><br />
+						<%= f.text_field :first_name %>
+					</div>  
+				</td>
+				<td class="name">  
+					<div class="field">
+						<%= f.label :last_name %><br />
+			 	 		<%= f.text_field :last_name %>
+					</div>
+				</td>
+			</tr>
+		</table>
+
+		<br /><br />
+
+
+
+
+		<table>
+
+			<tr>
+
+				<td>
+					<div class="field">
+						<%= f.label :last_exam %><br />
+						<%= f.datetime_select :last_exam, :order => [:month, :day, :year], :date_separator => "" %>
+					</div>
+				</td>
+
+				<td>
+					<div class="field">
+						<%= f.label :attending_id %><br />
+						<%= f.collection_select(:attending_id, Attending.all, :id, :name_with_initial, :prompt => true) %>
+					</div>
+				</td>
+
+				<td>
+					<div class="field">
+						<%= f.label :nurse_id %><br /> 
+						<%= f.collection_select(:nurse_id, Nurse.all, :id, :name_with_initial, :prompt => true) %>
+					</div>
+				</td>
+
+			</tr>
+			<tr>
+
+				<td>
+					<div class="field">
+						<%= f.label :current_dilation %><br />
+						<%= f.select :current_dilation, @patient.DILATIONS, :prompt => "Please select" %>
+					</div>
+				</td>
+
+				<td>
+					<div class="field">
+						<%= f.label :current_effacement %><br />
+						<%= f.select :current_effacement, @patient.EFFACEMENTS, :prompt => "Please select" %>
+					</div>
+				</td>
+				<td>
+					<div class="field">
+						<%= f.label :current_station %><br />
+						<%= f.select :current_station, @patient.STATIONS, :prompt => "Please select" %>
+					</div>
+				</td>
+
+			</tr><tr>
+
+				<td>
+					<div class="field">
+						<%= f.label :membrane %><br />
+						<%= f.select :membrane, @patient.MEMBRANES, :prompt => "Please select" %>
+					</div>
+				</td>
+
+				<td>
+					<div class="field">
+						<%= f.label :est_gest_age %><br />
+						<%= f.text_field :est_gest_age %>
+					</div>
+				</td>
+
+				<td>
+					<div class="field">
+						<%= f.label :gravidity %><br />
+						<%= f.select :gravidity, @patient.GRAVIDITIES, :prompt => "Please select" %>
+					</div>
+				</td>
+
+			</tr><tr>
+
+				<td>
+					<div class="field">
+						<%= f.label :parity %><br />
+						<%= f.select :parity, @patient.PARITIES, :prompt => "Please select"  %>
+					</div>
+				</td>
+
+				<td>
+					<div class="field">
+						<%= f.label :group_b_strep %><br />
+						<%= f.select :group_b_strep, @patient.GROUP_B_STREPS, :prompt => "Please select" %>
+					</div>
+				</td>
+
+				<td>
+					<div class="field">
+						<%= f.label :blood_type %><br />
+						<%= f.select :blood_type, @patient.BLOOD_TYPES, :prompt => "Please select" %>
+					</div>
+				</td>
+
+			</tr><tr>
+	
+				<td>
+					<div class="field">
+						<%= f.label :anesthesia_interview %><br />
+						<%= f.select :anesthesia_interview, @patient.ANESTHESIA_INTERVIEWS, :prompt => "Please select" %>
+					</div>
+				</td>
+
+				<td>
+					<div class="field">
+						<%= f.label :body_mass_index %><br />
+						<%= f.text_field :body_mass_index %>
+					</div>
+				</td>
+
+				<%= f.fields_for :comment do |comment_fields| %>	
+					<td>
+
+							<div class="field">
+								<%= comment_fields.check_box :airway %>
+								<%= comment_fields.label :airway %>
+							</div>
+					</td>
+
+				</tr><tr>
+
+					<td colspan="3">
+						<div class="cardiac_form_button">
+							<label for="hidden_cardiac_checkbox" style="cursor:pointer;"><img class="cardiac_triangle_img" alt="Triangle" src="/assets/triangle.png">
+					  	<div class="field">&nbsp; Cardiac disease 
+								<span class="cardiac_count" id="cardiac_count"></span> </label> <input type="checkbox" id="hidden_cardiac_checkbox">
+
+		<!-- <%= comment_fields.label :cardiac_disease %><br />
+				<%= comment_fields.check_box :cardiac_disease %> -->
+							</div> 
+						</div>
+
+						<%=render 'cardiac_table',:comment_fields=>comment_fields%>
+					</td>
+
+				</tr><tr>
+
+					<td colspan="3">
+						<div class="field">
+						  <%= comment_fields.check_box :chorioamnionitis %>
+						  <%= comment_fields.label :chorioamnionitis %>
+						</div>
+					</td>
+
+				</tr><tr>
+
+					<td colspan="3">
+						<div class="hemophilia_form_button">
+							<label for="hidden_hemophilia_checkbox" style="cursor:pointer;"><img class="hemophilia_triangle_img" alt="Triangle" src="/assets/triangle.png">
+							<div class="field">&nbsp; Hemophilia 
+								<span class="hemophilia_count" id="hemophilia_count"></span> </label> <input type="checkbox" id="hidden_hemophilia_checkbox">
+							</div>
+						</div>
+
+				 <!--       <div class="field">
+							<%= comment_fields.check_box :hemophilia %>
+								<%= comment_fields.label :hemophilia %>
+							</div>-->
+
+						<%=render 'hemophilia_table',:comment_fields=>comment_fields%>
+
+					</td>
+
+				</tr><tr>
+
+					<td colspan="3">
+						<div class="thrombophilia_form_button">
+							<label for="hidden_thrombophilia_checkbox" style="cursor:pointer;"><img class="thrombophilia_triangle_img" alt="Triangle" src="/assets/triangle.png">
+						  <div class="field">&nbsp; Thrombophilia 
+								<span class="thrombophilia_count" id="thrombophilia_count"></span></label> <input type="checkbox" id="hidden_thrombophilia_checkbox">
+						  </div>
+						</div>
+	
+		<!--  <div class="field">
+				<%= comment_fields.check_box :thrombophilia %>
+				<%= comment_fields.label :thrombophilia %>
+			</div>-->
+
+						<%=render 'thrombophilia_table',:comment_fields=>comment_fields%>
+		
+					</td>
+
+				</tr><tr>
+
+					<td colspan="3">
+						<div class="diabetes_form_button">
+							<label for="hidden_diabetes_checkbox" style="cursor:pointer;"><img class="diabetes_triangle_img" alt="Triangle" src="/assets/triangle.png">
+
+						  <div class="field">&nbsp; Diabetes 
+								<span class="diabetes_count" id="diabetes_count"></span></label> <input type="checkbox" id="hidden_diabetes_checkbox">
+						  </div>
+						</div>
+
+		<!--  <div class="field">
+				<%= comment_fields.check_box :diabetes %>
+				<%= comment_fields.label :diabetes %>
+			</div>-->
+
+						<%=render 'diabetes_table',:comment_fields=>comment_fields%>
+		
+
+					</td>
+
+				</tr><tr>
+
+				</tr><tr>
+
+					<td colspan="3">
+						<div class="preeclampsia_form_button">
+							<label for="hidden_preeclampsia_checkbox" style="cursor:pointer;"><img class="preeclampsia_triangle_img" alt="Triangle" src="/assets/triangle.png">
+
+						  <div class="field">&nbsp; Preeclampsia 
+								<span class="preeclampsia_count" id="preeclampsia_count"></span></label> <input type="checkbox" id="hidden_preeclampsia_checkbox">
+						  </div>
+						</div>
+
+						<%=render 'preeclampsia_table',:comment_fields=>comment_fields%>
+		
+
+					</td>
+
+				</tr><tr>
+
+					<td>
+						<div class="field">
+						  <%= comment_fields.check_box :macrosomia %>
+						  <%= comment_fields.label :macrosomia %>
+						</div>
+					</td>
+
+					<td>
+						<div class="field">
+						  <%= comment_fields.check_box :multiple_gestation %>
+						  <%= comment_fields.label :multiple_gestation %>
+						</div>
+						<span style="padding-left:20px;" class="field">
+						  <%= comment_fields.check_box :twins %>
+						  <span class="mg_text"><%= comment_fields.label :twins %>
+							</span>
+						</span>
+						<span class="field">
+						  <%= comment_fields.check_box :triplets %>
+						  <span class="mg_text"><%= comment_fields.label :triplets %>
+							</span>
+						</span>
+					</td>
+
+					<td>
+						<div class="field">
+						  <%= comment_fields.check_box :placenta_previa %>
+						  <%= comment_fields.label :placenta_previa %>
+						</div>
+					</td>
+
+				</tr><tr>
+
+					<td>
+						<div class="field">
+						  <%= comment_fields.check_box :placenta_accreta %>
+						  <%= comment_fields.label :placenta_accreta %>
+						</div>
+					</td>
+					<td>
+						<div class="field">
+						  <%= comment_fields.check_box :placenta_percreta %>
+						  <%= comment_fields.label :placenta_percreta %>
+						</div>
+					</td>
+		
+					<td style="padding-bottom:0px;">
+						<div class="field">
+						  <%= comment_fields.check_box :prior_cs %>
+						  <%= comment_fields.label :prior_cs %>
+						</div>
+						<div style="padding-left:20px;" class="field">
+						  <span class="p_cs_text"><%= comment_fields.label :location_of_placenta %>
+							</span><br />
+						  <%= comment_fields.text_field :location_of_placenta %>
+						</div>
+						<div style="padding-left:20px;" class="field">
+						  <span class="p_cs_text"><%= comment_fields.label :cs_times %>
+							</span><br />
+						  <%= comment_fields.text_field :cs_times %>
+						</div>
+					</td>
+
+				</tr><tr>
+
+					<td>
+						<div class="field">
+						  <%= comment_fields.check_box :placental_abruption %>
+						  <%= comment_fields.label :placental_abruption %>
+						</div>
+					</td>
+					<td>
+						<div class="field">
+							<%= comment_fields.check_box :polyhydramnios %>
+							<%= comment_fields.label :polyhydramnios %>
+						</div>
+					</td>
+					<td>
+						<div class="field">
+							<%= comment_fields.check_box :substance_abuse %>
+							<%= comment_fields.label :substance_abuse %>
+						</div>
+					</td>
+
+				</tr><tr>
+
+					<td colspan="3">
+						<div class="field">
+						  <%= comment_fields.label :general_free_text %><br />
+						  <%= comment_fields.text_area :general_free_text, :cols=>"110%",:rows=>"4%" %>
+						</div>
+					</td>
+				</tr>		
+			<% end %>
+			<tr>
+				<%= f.hidden_field :room_id, :value => @current_room_id %>
+				<td colspan="3" class="button">
+
+					<div style="float:left;width:50%;" id="left">
+						<%=button_to 'Back to Whiteboard', "/whiteboard/index", :method => "get" %> 
+		 	  	</div>
+					<div style="float:right;width:50%;" id="right">
+						<%= f.submit %>
+					</div>
+
+				</td>
+
+			</tr>
+		</table>
+	<% end %>
+
+</html>

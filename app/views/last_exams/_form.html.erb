@@ -1,0 +1,37 @@
+<%= form_for(@last_exam) do |f| %>
+  <% if @last_exam.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@last_exam.errors.count, "error") %> prohibited this last_exam from being saved:</h2>
+
+      <ul>
+      <% @last_exam.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :exam_time %><br />
+    <%= f.datetime_select :exam_time %>
+  </div>
+  <div class="field">
+    <%= f.label :dilation %><br />
+    <%= f.number_field :dilation %>
+  </div>
+  <div class="field">
+    <%= f.label :effacement %><br />
+    <%= f.number_field :effacement %>
+  </div>
+  <div class="field">
+    <%= f.label :station %><br />
+    <%= f.number_field :station %>
+  </div>
+  <div class="field">
+    <%= f.label :patient_id %><br />
+    <%= f.number_field :patient_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,108 @@
+<div class="cardiac_form_set">
+  <table class="cardiac_form_table" style="width:97.5%;">
+
+    <tr>
+		  <td>
+				<div class="field">
+    	    <%= comment_fields.check_box :aortic_stenosis %>
+    	    <%= comment_fields.label :aortic_stenosis %>
+        </div>
+			</td>
+
+      <td>
+				<div class="field">
+	  	    <%= comment_fields.check_box :aoritic_regurg %>
+	  	    <%= comment_fields.label :aoritic_regurg %>
+  	  	</div>
+			</td>
+
+		  <td>
+				<div class="field">
+    	    <%= comment_fields.check_box :vitral_valve_proalapse %>
+    	    <%= comment_fields.label :vitral_valve_proalapse %>
+	  	  </div>
+			</td>
+    </tr>
+
+
+		<tr>
+		  <td>
+				<div class="valve_replacement_cell">
+					<div class="field">
+	    	    <%= comment_fields.check_box :valve_replacement %>
+	    	    <%= comment_fields.label :valve_replacement %>
+		  	  </div>
+				</div>
+
+			  <span style="padding-left:20px;" class="field">
+    	    <%= comment_fields.check_box :aortic_vr %>
+    	    <span class="vr_text"><%= comment_fields.label :aortic_vr %>
+					</span>
+	  	  </span>
+
+			  <span class="field">
+    	    <%= comment_fields.check_box :mitral_vr %>
+    	    <span class="vr_text"><%= comment_fields.label :mitral_vr %>
+					</span>
+	  	  </span>
+			</td>
+<!--
+<td>  <div class="field">
+<%= comment_fields.check_box :aortic_vr %>
+<%= comment_fields.label :aortic_vr %>
+</div></td>
+
+<td><div class="field">
+<%= comment_fields.check_box :mitral_vr %>
+<%= comment_fields.label :mitral_vr %>
+</div></td>
+-->
+
+		  <td>
+				<div class="field">
+	  	    <%= comment_fields.check_box :congential_heart_disease %>
+			    <%= comment_fields.label :congential_heart_disease %>
+	  	  </div>
+			</td>
+
+		  <td>
+				<div class="field">
+    	    <%= comment_fields.check_box :cong_hd_repair %>
+    	    <%= comment_fields.label :cong_hd_repair %>
+	  	  </div>
+			</td>
+		</tr>
+
+		<tr>
+		  <td>
+				<div class="field">
+    	    <%= comment_fields.check_box :cardiomyopathy %>
+    	    <%= comment_fields.label :cardiomyopathy %>
+  	    </div>
+			</td>
+
+		  <td>
+				<div class="field">
+    	    <%= comment_fields.check_box :coronary_artery_disease %>
+    	    <%= comment_fields.label :coronary_artery_disease %>
+	  	  </div>
+			</td>
+
+		  <td>
+				<div class="field">
+    	    <%= comment_fields.check_box :pulmonary_hypertension %>
+    	    <%= comment_fields.label :pulmonary_hypertension %>
+	  	  </div>
+			</td>
+
+		</tr><tr>	  
+
+	  	<td colspan="3">
+				<div class="field">
+			    <%= comment_fields.label :cardiac_disease_free_text %><br />
+	  	    <%= comment_fields.text_field :cardiac_disease_free_text %>
+	  	  </div>
+			</td>
+		</tr>
+  </table>
+</div>

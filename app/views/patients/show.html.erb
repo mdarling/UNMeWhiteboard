@@ -1,0 +1,85 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>First name:</b>
+  <%= @patient.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @patient.last_name %>
+</p>
+
+<p>
+  <b>Last exam:</b>
+  <%= @patient.last_exam %>
+</p>
+
+<p>
+  <b>Current dilation:</b>
+  <%= @patient.current_dilation %>
+</p>
+
+<p>
+  <b>Current effacement:</b>
+  <%= @patient.current_effacement %>
+</p>
+
+<p>
+  <b>Current station:</b>
+  <%= @patient.current_station %>
+</p>
+
+<p>
+  <b>Membrane:</b>
+  <%= @patient.membrane %>
+</p>
+
+<p>
+  <b>Est gest age:</b>
+  <%= @patient.est_gest_age %>
+</p>
+
+<p>
+  <b>Gravidity:</b>
+  <%= @patient.gravidity %>
+</p>
+
+<p>
+  <b>Parity:</b>
+  <%= @patient.parity %>
+</p>
+
+<p>
+  <b>Group b strep:</b>
+  <%= @patient.group_b_strep %>
+</p>
+
+<p>
+  <b>Blood type:</b>
+  <%= @patient.blood_type %>
+</p>
+
+<p>
+  <b>Body mass index:</b>
+  <%= @patient.body_mass_index %>
+</p>
+
+<p>
+  <b>Room:</b>
+  <%= @patient.room_id %>
+</p>
+
+<p>
+  <b>Attending:</b>
+  <%= @patient.attending_id %>
+</p>
+
+<p>
+  <b>Nurse:</b>
+  <%= @patient.nurse_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_patient_path(@patient) %> |
+<%= link_to 'Back', patients_path %>

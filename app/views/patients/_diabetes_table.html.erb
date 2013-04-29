@@ -1,0 +1,41 @@
+<div class="diabetes_form_set">
+	<table class="diabetes_form_table" style="width:97.5%;">
+		<tr>
+
+			<td>
+				<div class="field">
+					<%= comment_fields.check_box :gestational_diabetes %>
+					<%= comment_fields.label :gestational_diabetes %>
+				</div>
+
+				<span style="padding-left:20px;" class="field">
+					<%= comment_fields.check_box :gdma1 %>
+					<span class="gd_text"><%= comment_fields.label :gdma1 %>
+					</span>
+				</span>
+
+				<span class="field">
+					<%= comment_fields.check_box :gdma2 %>
+					<span class="gd_text"><%= comment_fields.label :gdma2 %>
+					</span>
+				</span>
+			</td>
+
+
+
+			<td>
+				<div class="field">
+					<%= comment_fields.check_box :type_1_diabetes %>
+					<%= comment_fields.label :type_1_diabetes %>
+				</div>
+			</td>
+
+			<td colspan="2">
+				<div class="field">
+					<%= comment_fields.check_box :type_2_diabetes %>
+					<%= comment_fields.label :type_2_diabetes %>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>

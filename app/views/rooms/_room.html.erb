@@ -1,0 +1,288 @@
+<%= form_for(@patient) do |f| %>
+  <% if @patient.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+
+      <ul>
+      <% @patient.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_exam %><br />
+    <%= f.datetime_select :last_exam, :order => [:month, :day, :year], :date_separator => "" %>
+  </div>
+  <div class="field">
+    <%= f.label :current_dilation %><br />
+    <%= f.select :current_dilation, @patient.DILATIONS, :prompt => "Please select" %>
+  </div>
+  <div class="field">
+    <%= f.label :current_effacement %><br />
+    <%= f.select :current_effacement, @patient.EFFACEMENTS, :prompt => "Please select" %>
+  </div>
+  <div class="field">
+    <%= f.label :current_station %><br />
+    <%= f.select :current_station, @patient.STATIONS, :prompt => "Please select" %>
+  </div>
+  <div class="field">
+    <%= f.label :membrane %><br />
+    <%= f.select :membrane, @patient.MEMBRANES, :prompt => "Please select" %>
+  </div>
+  <div class="field">
+    <%= f.label :est_gest_age %><br />
+    <%= f.text_field :est_gest_age %>
+  </div>
+  <div class="field">
+    <%= f.label :gravidity %><br />
+    <%= f.select :gravidity, @patient.GRAVIDITIES, :prompt => "Please select" %>
+  </div>
+  <div class="field">
+    <%= f.label :parity %><br />
+    <%= f.select :parity, @patient.PARITIES, :prompt => "Please select"  %>
+  </div>
+  <div class="field">
+    <%= f.label :group_b_strep %><br />
+    <%= f.select :group_b_strep, @patient.GROUP_B_STREPS, :prompt => "Please select" %>
+  </div>
+  <div class="field">
+    <%= f.label :blood_type %><br />
+    <%= f.select :blood_type, @patient.BLOOD_TYPES, :prompt => "Please select" %>
+  </div>
+  <div class="field">
+    <%= f.label :anesthesia_interview %><br />
+    <%= f.select :anesthesia_interview, @patient.ANESTHESIA_INTERVIEWS, :prompt => "Please select" %>
+  </div>
+  <div class="field">
+    <%= f.label :body_mass_index %><br />
+    <%= f.text_field :body_mass_index %>
+  </div>
+  <div class="field">
+    <%= f.label :attending_id %><br />
+    <%= f.collection_select(:attending_id, Attending.all, :id, :name_with_initial, :prompt => true) %>
+  </div>
+  <div class="field">
+    <%= f.label :nurse_id %><br /> 
+    <%= f.collection_select(:nurse_id, Nurse.all, :id, :name_with_initial, :prompt => true) %>
+  </div>
+  <br />
+  
+  <%= f.fields_for :comment do |comment_fields| %>
+ 	<div class="field">
+    <%= comment_fields.label :airway %><br />
+    <%= comment_fields.check_box :airway %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :cardiac_disease %><br />
+    <%= comment_fields.check_box :cardiac_disease %>
+  </div> 
+  <div class="field">
+    <%= comment_fields.label :aortic_stenosis %><br />
+    <%= comment_fields.check_box :aortic_stenosis %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :aoritic_regurg %><br />
+    <%= comment_fields.check_box :aoritic_regurg %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :vitral_valve_proalapse %><br />
+    <%= comment_fields.check_box :vitral_valve_proalapse %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :valve_replacement %><br />
+    <%= comment_fields.check_box :valve_replacement %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :aortic_vr %><br />
+    <%= comment_fields.check_box :aortic_vr %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :mitral_vr %><br />
+    <%= comment_fields.check_box :mitral_vr %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :congential_heart_disease %><br />
+    <%= comment_fields.check_box :congential_heart_disease %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :cong_hd_repair %><br />
+    <%= comment_fields.check_box :cong_hd_repair %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :cardiomyopathy %><br />
+    <%= comment_fields.check_box :cardiomyopathy %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :coronary_artery_disease %><br />
+    <%= comment_fields.check_box :coronary_artery_disease %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :pulmonary_hypertension %><br />
+    <%= comment_fields.check_box :pulmonary_hypertension %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :cardiac_disease_free_text %><br />
+    <%= comment_fields.text_field :cardiac_disease_free_text, %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :chorioamnionitis %><br />
+    <%= comment_fields.check_box :chorioamnionitis %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :hemophilia %><br />
+    <%= comment_fields.check_box :hemophilia %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :hemophilia %><br />
+    <%= comment_fields.check_box :hemophilia %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :atp %><br />
+    <%= comment_fields.check_box :atp %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :ttp %><br />
+    <%= comment_fields.check_box :ttp %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :thrombocytopenia %><br />
+    <%= comment_fields.check_box :thrombocytopenia %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :vw_disease %><br />
+    <%= comment_fields.check_box :vw_disease %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :factor_deficiency %><br />
+    <%= comment_fields.check_box :factor_deficiency %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :hemophilia_free_text %><br />
+    <%= comment_fields.text_field :hemophilia_free_text %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :thrombophilia %><br />
+    <%= comment_fields.check_box :thrombophilia %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :antithrombin %><br />
+    <%= comment_fields.check_box :antithrombin %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :prot_c_deficiency %><br />
+    <%= comment_fields.check_box :prot_c_deficiency %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :prot_s_deficiency %><br />
+    <%= comment_fields.check_box :prot_s_deficiency %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :factor_v_leiden %><br />
+    <%= comment_fields.check_box :factor_v_leiden %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :lupus_anticoag %><br />
+    <%= comment_fields.check_box :lupus_anticoag %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :thrombophilia_free_text %><br />
+    <%= comment_fields.text_field :thrombophilia_free_text %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :anticoag_meds %><br />
+    <%= comment_fields.check_box :anticoag_meds %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :diabetes %><br />
+    <%= comment_fields.check_box :diabetes %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :gestational_diabetes %><br />
+    <%= comment_fields.check_box :gestational_diabetes %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :gdma1 %><br />
+    <%= comment_fields.check_box :gdma1 %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :gdma2 %><br />
+    <%= comment_fields.check_box :gdma2 %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :type_1_diabetes %><br />
+    <%= comment_fields.check_box :type_1_diabetes %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :type_2_diabetes %><br />
+    <%= comment_fields.check_box :type_2_diabetes %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :macrosomia %><br />
+    <%= comment_fields.check_box :macrosomia %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :multiple_gestation %><br />
+    <%= comment_fields.check_box :multiple_gestation %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :twins %><br />
+    <%= comment_fields.check_box :twins %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :triplets %><br />
+    <%= comment_fields.check_box :triplets %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :placenta_previa %><br />
+    <%= comment_fields.check_box :placenta_previa %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :placenta_accreta %><br />
+    <%= comment_fields.check_box :placenta_accreta %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :placenta_percreta %><br />
+    <%= comment_fields.check_box :placenta_percreta %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :prior_cs %><br />
+    <%= comment_fields.check_box :prior_cs %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :location_of_placenta %><br />
+    <%= comment_fields.text_field :location_of_placenta %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :placental_abruption %><br />
+    <%= comment_fields.check_box :placental_abruption %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :polyhydramnios %><br />
+    <%= comment_fields.check_box :polyhydramnios %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :substance_abuse %><br />
+    <%= comment_fields.check_box :substance_abuse %>
+  </div>
+  <div class="field">
+    <%= comment_fields.label :general_free_text %><br />
+    <%= comment_fields.text_field :general_free_text %>
+  </div>
+  <% end %>
+  
+  <%= f.hidden_field :room_id, :value => @current_room_id %>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
